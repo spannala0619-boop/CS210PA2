@@ -83,6 +83,8 @@ public:
     // TODO 9: free every scene in the story and leave the tree empty.
     // Hint: what does deleting a Scene already do for you?
     void clear() {
+        delete root_;
+        root_ = nullptr;
     }
 
     int countScenes() const {
