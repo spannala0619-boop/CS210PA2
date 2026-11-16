@@ -27,7 +27,17 @@ private:
 
     // TODO 7: how many endings are in the story that starts at scene?
     int countEndings(Scene<T>* scene) const {
-        return 0;
+        if (scene == nullptr) {
+            return 0;
+        }
+        if (scene->isEnding()) {
+            return 1;
+        }
+        int total = 0;
+        for (int i = 0; i < scene->getNumChoices(); i++) {
+            total +=countEndings(scene->getChoices(i));
+        }
+        return total;
     }
 
     // TODO 8: the most choices a player can make on the way to an ending,
