@@ -1,6 +1,96 @@
 START_HP 10
-SCENE Replace this file with your own story.
+SCENE You are Nova, a courier entering the Clockwork Valley before midnight.
 HP 0
 LOOT 0
 ITEM none
-CHOICES 0
+CHOICES 3
+LABEL Take the glittering shortcut
+  SCENE The shortcut sparkles with easy money and suspiciously warm air.
+  HP -1
+  LOOT 7
+  ITEM Brass Coin
+  CHOICES 1
+  LABEL Open the iron gate
+    SCENE The gate slams shut, and a clockwork dragon wakes beneath the road.
+    HP -15
+    LOOT 0
+    ITEM none
+    CHOICES 0
+LABEL Follow the old road
+  SCENE The old road is muddy, but its milestones point toward the valley.
+  HP 0
+  LOOT 1
+  ITEM Map Scrap
+  CHOICES 3
+  LABEL Climb toward the bridge
+    SCENE You climb a rocky slope and reach a bridge above the clouds.
+    HP -1
+    LOOT 1
+    ITEM Rope
+    CHOICES 1
+    LABEL Cross the bridge
+      SCENE The bridge sways while storm birds circle below you.
+      HP -1
+      LOOT 1
+      ITEM none
+      CHOICES 1
+      LABEL Enter the tower
+        SCENE Inside the tower, an ancient lift carries you higher.
+        HP 0
+        LOOT 1
+        ITEM Gear Key
+        CHOICES 1
+        LABEL Climb to the summit
+          SCENE At the summit, you find a moonlit vault guarded by a silent owl.
+          HP -1
+          LOOT 2
+          ITEM none
+          CHOICES 1
+          LABEL Open the vault
+            SCENE The vault opens, and the valley lights guide your delivery home.
+            HP 0
+            LOOT 8
+            ITEM Star Compass
+            CHOICES 0
+  LABEL Visit the lantern market
+    SCENE The lantern market offers a warm meal and a quick bargain.
+    HP 2
+    LOOT 2
+    ITEM Silver Button
+    CHOICES 1
+    LABEL Trade for a safe pass
+      SCENE The merchant gives you a safe pass and wishes you a quiet journey.
+      HP 0
+      LOOT 3
+      ITEM none
+      CHOICES 0
+  LABEL Enter the whispering cave
+    SCENE The cave whispers your name and glows with blue crystals.
+    HP -2
+    LOOT 1
+    ITEM Cave Crystal
+    CHOICES 1
+    LABEL Follow the crystal trail
+      SCENE The crystal trail leads to a hidden shrine.
+      HP 0
+      LOOT 6
+      ITEM none
+      CHOICES 0
+LABEL Ask the valley oracle
+  SCENE The valley oracle offers two answers, but only one sounds honest.
+  HP 0
+  LOOT 1
+  ITEM Oracle Thread
+  CHOICES 2
+  LABEL Choose the honest answer
+    SCENE The honest answer is difficult, but it leads you safely home.
+    HP 1
+    LOOT 4
+    ITEM none
+    CHOICES 0
+  LABEL Choose the easy answer
+    SCENE The easy answer loops through time until the last bell rings.
+    HP -11
+    LOOT 10
+    ITEM none
+    CHOICES 0
