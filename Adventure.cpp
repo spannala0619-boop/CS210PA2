@@ -1,6 +1,6 @@
 #include "Adventure.h"
 #include <iostream>
-
+#include <sstream>
 // ===================== GIVEN HELPERS (do not change) =====================
 
 // Reads the next line that is not blank.
@@ -151,8 +151,31 @@ Scene<Moment>* Adventure::readScene(std::ifstream& in, const std::string& label)
 //     and ask again.
 //   - If the input ends (getline fails), return 0.
 int Adventure::askChoice(int numChoices) {
-    return 0;
+    while (true) {
+        std::cout << "Your choice: ";
+
+        std::string line;
+
+        if (!std::getline(std::cin, line)) {
+            return 0;
+        }
+
+        std::stringstream input(line);
+        int choice;
+        char extra;
+
+        if ((input >> choice) &&
+            !(input >> extra) &&
+            choice >= 1 &&
+            choice <= numChoices) {
+            return choice;
+            }
+
+        std::cout << "Please type a number from 1 to "
+                  << numChoices << "." << std::endl;
+    }
 }
+
 
 // TODO 13: play the story once from the start.
 // Every time the player ENTERS a scene, in this order:
