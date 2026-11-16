@@ -59,5 +59,8 @@ public:
     // TODO 5: put next into slot index.
     // Do nothing if index is not a real slot.
     void setChoice(int index, Scene<T>* next) {
+        if (index >0 && index < numChoices_) {
+            choices_[index] = next;
+        }
     }
 };
