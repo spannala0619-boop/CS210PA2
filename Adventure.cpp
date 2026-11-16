@@ -195,6 +195,69 @@ int Adventure::askChoice(int numChoices) {
 // and then print the bag.
 // The bag is a List<Item>. Start with HP = startHp_ and loot = 0.
 void Adventure::play() {
+    int hp = startHp_;
+    int loot = 0;
+    List<Item> bag;
+    Scene<Moment>* scene = tree_.getRoot();
+
+    while (scene != nullptr) {
+        Moment* moment = scene->getData();
+
+        hp += moment->getHpChange();
+        loot += moment->getLoot();
+
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << moment->getText() << std::endl;
+
+        if (moment->hasItem()) {
+            Item item(moment->getItem());
+
+            if (bag.search(item)) {
+                std::cout << "You already have: "
+                          << moment->getItem() << std::endl;
+            } else {
+                bag.addFront(new Item(moment->getItem()));
+
+                std::cout << "You picked up: "
+                          << moment->getItem() << std::endl;
+            }
+        }
+
+        std::cout << "HP: " << hp
+                  << "  Loot: " << loot << std::endl;
+
+        if (hp <= 0) {
+            std::cout << "Your HP hit 0. GAME OVER." << std::endl;
+            break;
+        }
+
+        if (scene->isEnding()) {
+            std::cout << "THE END." << std::endl;
+            break;
+        }
+
+        for (int i = 0; i < scene->getNumChoices(); i++) {
+            std::cout << "[" << (i + 1) << "] "
+                      << scene->getChoice(i)->getData()->getLabel()
+                      << std::endl;
+        }
+
+        int choice = askChoice(scene->getNumChoices());
+
+        if (choice == 0) {
+            return;
+        }
+
+        scene = scene->getChoice(choice - 1);
+    }
+
+    std::cout << "Final HP: " << hp
+              << "  Final loot: " << loot << std::endl;
+
+    std::cout << "Inventory (" << bag.size()
+              << " items):" << std::endl;
+
+    bag.print();
 }
 
 // ===================== ANALYZING =====================
