@@ -18,10 +18,12 @@ public:
     static const int MAX_CHOICES = 3;
 
     Scene(T* data, int numChoices) : data_(data), choices_(nullptr), numChoices_(numChoices) {
-        // TODO 1:
-        // A scene with numChoices_ choices needs exactly numChoices_ slots.
-        // An ending (0 choices) needs no slots at all.
-        // Every slot must start out empty.
+       if (numChoices_ > 0) {
+           choices_ = new Scene<T>*[numChoices_];
+           for (int i = 0; i < numChoices_; i++) {
+               choices_[i] = nullptr;
+           }
+       }
     }
 
     ~Scene() {
